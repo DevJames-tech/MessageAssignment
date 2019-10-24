@@ -11,21 +11,16 @@ class MainActivity : AppCompatActivity() {
     val messageList = arrayListOf<Message>(
 
         Message("hello", "me"),
-                Message("hola", "other"),
-                    Message("today", "me"),
-                            Message("monday", "other")
+        Message("hola", "other"),
+        Message("today", "me"),
+        Message("monday", "other")
     )
-
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
+        initRecyclerView()
 
     }
 

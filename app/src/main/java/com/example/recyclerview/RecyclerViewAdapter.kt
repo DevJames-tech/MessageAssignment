@@ -16,15 +16,27 @@ class RecyclerViewAdapter(val messageList: ArrayList<Message>): RecyclerView.Ada
 
 
 
+        val layoutInflater =  LayoutInflater.from(parent.context)
 
-     val layoutInflater =  LayoutInflater.from(parent.context)
+       return if( 
 
-       return ViewHolder(layoutInflater.inflate(R.layout.recyclerview_item_other, parent, false))
+           ViewHolder(layoutInflater.inflate(R.layout.recyclerview_item_other, parent, false))
     }
 
     override fun getItemViewType(position: Int): Int {
 
-        return super.getItemViewType(position)
+        val message = messageList.get(position)
+
+        if(message.sender == "other"){
+
+            return 1
+
+        } else {
+
+            return 0
+        }
+
+
 
     }
 
@@ -36,7 +48,7 @@ class RecyclerViewAdapter(val messageList: ArrayList<Message>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.textView.text = messageList.get(position).message.plus(messageList.get(position).sender)
+        holder.textView.text = messageList.get(position).message.plus(" "+messageList.get(position).sender)
 
     }
 
