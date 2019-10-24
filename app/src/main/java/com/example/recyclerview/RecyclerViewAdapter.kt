@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 
-class RecyclerViewAdapter(val meList: ArrayList<Message>, val otherList: ArrayList<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(val messageList: ArrayList<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
   //  constructor( itemList: ArrayList<Item>) : this() { }
 
@@ -19,7 +19,7 @@ class RecyclerViewAdapter(val meList: ArrayList<Message>, val otherList: ArrayLi
 
      val layoutInflater =  LayoutInflater.from(parent.context)
 
-       return ViewHolder(layoutInflater.inflate(R.layout.recyclerview_items, parent, false))
+       return ViewHolder(layoutInflater.inflate(R.layout.recyclerview_item_other, parent, false))
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -30,19 +30,19 @@ class RecyclerViewAdapter(val meList: ArrayList<Message>, val otherList: ArrayLi
 
     override fun getItemCount(): Int {
 
-        if (getItemViewType())
-        return meList.size
+       // if (getItemViewType())
+        return messageList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.textView.text = itemList.get(position).title
+        holder.textView.text = messageList.get(position).message.plus(messageList.get(position).sender)
+
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        val textView = itemView.findViewById(R.id.meMessageTextView) as TextView
-        val textView = itemView.findViewById(R.id.otherMessageTextView) as TextView
+        val textView = itemView.findViewById(R.id.textView) as TextView
 
 
     }
