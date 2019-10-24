@@ -2,7 +2,7 @@ package com.example.recyclerview
 
 class MessageFrom {
 
-    private val ME = arrayListOf<Message>(
+     val ME = arrayListOf<Message>(
 
         Message("Hello", "Me"),
         Message("How are you", "Me"),
@@ -10,7 +10,7 @@ class MessageFrom {
 
     )
 
-    private val OTHER = arrayListOf<Message>(
+     val OTHER = arrayListOf<Message>(
 
         Message("Hola", "Other"),
         Message("very goodd!", "Other"),

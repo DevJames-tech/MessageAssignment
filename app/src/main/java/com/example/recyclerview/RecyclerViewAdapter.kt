@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 
-class RecyclerViewAdapter(val itemList: ArrayList<Item>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(val meList: ArrayList<Message>, val otherList: ArrayList<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
   //  constructor( itemList: ArrayList<Item>) : this() { }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
+
 
 
      val layoutInflater =  LayoutInflater.from(parent.context)
@@ -21,13 +23,15 @@ class RecyclerViewAdapter(val itemList: ArrayList<Item>): RecyclerView.Adapter<R
     }
 
     override fun getItemViewType(position: Int): Int {
+
         return super.getItemViewType(position)
 
     }
 
     override fun getItemCount(): Int {
 
-        return itemList.size
+        if (getItemViewType())
+        return meList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -37,7 +41,10 @@ class RecyclerViewAdapter(val itemList: ArrayList<Item>): RecyclerView.Adapter<R
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        val textView = itemView.findViewById(R.id.textView) as TextView
+        val textView = itemView.findViewById(R.id.meMessageTextView) as TextView
+        val textView = itemView.findViewById(R.id.otherMessageTextView) as TextView
+
+
     }
 
 

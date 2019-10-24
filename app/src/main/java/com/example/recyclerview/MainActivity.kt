@@ -12,15 +12,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val itemList = arrayListOf<Item>(
 
-            Item("Gear"),
-            Item("Frog"),
-            Item("Apple"),
-            Item("Bacon")
-        )
 
-        val recyclerViewAdapter = RecyclerViewAdapter(itemList)
+
+
+    }
+
+    fun initRecyclerView(){
+
+        val message = MessageFrom();
+        val recyclerViewAdapter = RecyclerViewAdapter(message.ME, message.OTHER)
         recyclerView.adapter = recyclerViewAdapter
         val manager = LinearLayoutManager(this)
         recyclerView.layoutManager = manager
