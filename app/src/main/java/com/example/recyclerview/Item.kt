@@ -1,3 +1,3 @@
 package com.example.recyclerview
 
-data class Item(val title: String)
+data class Message(val Message: String, val Sender: String)
