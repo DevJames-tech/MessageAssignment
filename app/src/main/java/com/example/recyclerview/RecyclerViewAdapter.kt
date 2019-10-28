@@ -15,12 +15,15 @@ class RecyclerViewAdapter(val messageList: ArrayList<Message>): RecyclerView.Ada
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
 
+        val layoutInflater = LayoutInflater.from(parent.context)
 
-        val layoutInflater =  LayoutInflater.from(parent.context)
+        return when (viewType) {
 
-       return if( 
+            1 -> return ViewHolder(layoutInflater.inflate(R.layout.recyclerview_item_other, parent, false))
+            0 -> return ViewHolder(layoutInflater.inflate(R.layout.recyclerview_item_me, parent, false))
+            else  -> return ViewHolder(layoutInflater.inflate(R.layout.recyclerview_item_other, parent, false))
+        }
 
-           ViewHolder(layoutInflater.inflate(R.layout.recyclerview_item_other, parent, false))
     }
 
     override fun getItemViewType(position: Int): Int {
