@@ -2,6 +2,8 @@ package com.example.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,4 +34,16 @@ class MainActivity : AppCompatActivity() {
         val manager = LinearLayoutManager(this)
         recyclerView.layoutManager = manager
     }
+
+    fun onClick(view: View) {
+
+        val editText = view.findViewById<EditText>(R.id.editText)
+        val randomSender = mutableListOf("me", "other")
+
+        val newMessage = Message(editText.text.toString(), randomSender.random())
+
+        messageList.add(newMessage )
+    }
+
+
 }
