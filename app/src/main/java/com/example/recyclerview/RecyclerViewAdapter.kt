@@ -51,13 +51,25 @@ class RecyclerViewAdapter(val messageList: ArrayList<Message>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.textView.text = messageList.get(position).message.plus(" "+messageList.get(position).sender)
+        holder.tvSender?.text = messageList.get(position).sender
+        holder.tvMessage?.text = messageList.get(position).message
+        holder.tvOther?.text = messageList.get(position).sender
+        holder.tvMe?.text = messageList.get(position).message
+
+
+
 
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        val textView = itemView.findViewById(R.id.textView) as TextView
+       val tvMessage = itemView.findViewById(R.id.tvMessage) as TextView?
+        val tvSender = itemView.findViewById(R.id.tvSender) as TextView?
+        val tvOther = itemView.findViewById(R.id.tvOther) as TextView?
+       val tvMe = itemView.findViewById(R.id.tvMe) as TextView?
+
+
+
 
 
     }
