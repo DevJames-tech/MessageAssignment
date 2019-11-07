@@ -2,29 +2,27 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-        android:background="@drawable/message_bg2"
-            android:layout_marginEnd="200dp"
-
-              android:layout_height="wrap_content">
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@drawable/message_bg"
+        android:layout_marginEnd="200dp"
+        android:backgroundTint="#F44336"
+        android:layout_height="wrap_content">
 
     <TextView
-            android:id="@+id/tvMe"
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".8"
-            android:textSize="10sp"
-
-
-            tools:text="tvOther"/>
-    <TextView
-            android:id="@+id/tvOther"
+            android:id="@+id/tvSender"
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            tools:text="tvMessage"/>
 
+    <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:text=" tvMe" />
 
 </LinearLayout>

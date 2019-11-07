@@ -1,14 +1,14 @@
-package com.example.recyclerview
+package com.example.recyclerview.model
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recyclerview.R
 
 
-
-class RecyclerViewAdapter(val messageList: ArrayList<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(val messageList: List<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
   //  constructor( itemList: ArrayList<Item>) : this() { }
 
@@ -53,8 +53,7 @@ class RecyclerViewAdapter(val messageList: ArrayList<Message>): RecyclerView.Ada
 
         holder.tvSender?.text = messageList.get(position).sender
         holder.tvMessage?.text = messageList.get(position).message
-        holder.tvOther?.text = messageList.get(position).sender
-        holder.tvMe?.text = messageList.get(position).message
+
 
 
 
@@ -65,8 +64,7 @@ class RecyclerViewAdapter(val messageList: ArrayList<Message>): RecyclerView.Ada
 
        val tvMessage = itemView.findViewById(R.id.tvMessage) as TextView?
         val tvSender = itemView.findViewById(R.id.tvSender) as TextView?
-        val tvOther = itemView.findViewById(R.id.tvOther) as TextView?
-       val tvMe = itemView.findViewById(R.id.tvMe) as TextView?
+
 
 
 
