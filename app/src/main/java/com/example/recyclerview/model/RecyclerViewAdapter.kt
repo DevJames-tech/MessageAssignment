@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.R
 
 
-class RecyclerViewAdapter(val messageList: List<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(val messageList:List<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
   //  constructor( itemList: ArrayList<Item>) : this() { }
 

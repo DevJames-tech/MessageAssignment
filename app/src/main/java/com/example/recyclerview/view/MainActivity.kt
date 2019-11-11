@@ -2,10 +2,12 @@ package com.example.recyclerview.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview.model.Message
@@ -33,12 +35,12 @@ class MainActivity :  FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val button:Button = findViewById(R.id.button)
 
-        val viewModel = ViewModelProviders.of(this).get(MessageViewModel::class.java)
+      //  val viewModel = ViewModelProviders.of(this).get(MessageViewModel::class.java)
 
-        loadMessages()
-            initRecyclerView(listOfMessages)
+        initMessages()
 
         button.setOnClickListener{
 
@@ -64,6 +66,8 @@ class MainActivity :  FragmentActivity() {
 
     fun initRecyclerView(messageList: List<Message>){
 
+        Log.d("TAG", " here is REcycler")
+
         val recyclerViewAdapter = RecyclerViewAdapter(messageList)
         recyclerView.adapter = recyclerViewAdapter
         val manager = LinearLayoutManager(this)
@@ -78,11 +82,12 @@ class MainActivity :  FragmentActivity() {
         }
     }
 
-    fun loadMessages(){
 
-        val reponse = RetrofitResponse()
+    fun initMessages(){
 
-       listOfMessages = reponse.initNetorkCall()
+        val response = RetrofitResponse()
+
+        response.initNetorkCall().observe(this, Observer { messages -> initRecyclerView(messageList)})
     }
 
 
