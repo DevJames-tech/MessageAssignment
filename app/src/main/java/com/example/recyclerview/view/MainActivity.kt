@@ -21,7 +21,7 @@ class MainActivity :  FragmentActivity() {
 
 
     private lateinit var listOfMessages: List<Message>
-   private val messageList = arrayListOf<Message>(
+    /*private val messageList = arrayListOf<Message>(
 
        Message("hello", "me"),
        Message("hola", "other"),
@@ -29,67 +29,67 @@ class MainActivity :  FragmentActivity() {
        Message("monday", "other")
 
 
-    )
+    )*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        val button:Button = findViewById(R.id.button)
+        val button: Button = findViewById(R.id.button)
 
-      //  val viewModel = ViewModelProviders.of(this).get(MessageViewModel::class.java)
+        //  val viewModel = ViewModelProviders.of(this).get(MessageViewModel::class.java)
 
         initMessages()
 
-        button.setOnClickListener{
+        button.setOnClickListener {
 
-            val editText:EditText = findViewById(R.id.editText)
+            val response =RetrofitResponse()
+            val editText: EditText = findViewById(R.id.editText)
             val randomSender = mutableListOf("me", "other")
             val newMessage =
+
                 Message(
                     editText.text.toString(),
                     randomSender.random()
                 )
+            (recyclerView.adapter as RecyclerViewAdapter).addMessagge(newMessage)
 
-           /* messageList.add(
-                Message(
-                    viewModel.getDataFromRepo().get(0).message,
-                    viewModel.getDataFromRepo().get(0).sender))
-            recyclerView.adapter?.notifyDataSetChanged()
-            editText.setText("")*/
+
+            editText.setText("")
         }
-
 
 
     }
 
-    fun initRecyclerView(messageList: List<Message>){
+    fun initRecyclerView(messages: ArrayList<Message>) {
 
         Log.d("TAG", " here is REcycler")
 
-        val recyclerViewAdapter = RecyclerViewAdapter(messageList)
+        val recyclerViewAdapter = RecyclerViewAdapter(messages)
         recyclerView.adapter = recyclerViewAdapter
         val manager = LinearLayoutManager(this)
         recyclerView.layoutManager = manager
     }
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
-        return when(keyCode){
+        return when (keyCode) {
 
             KeyEvent.KEYCODE_ENTER -> button.callOnClick()
-            else ->  false
+            else -> false
         }
     }
 
 
-    fun initMessages(){
+    fun initMessages() {
 
         val response = RetrofitResponse()
 
-        response.initNetorkCall().observe(this, Observer { messages -> initRecyclerView(messageList)})
+
+        response.initNetorkCall().observe(this, Observer { messages -> initRecyclerView(messages as ArrayList<Message>)
+        })
+
+
     }
-
-
 }
 

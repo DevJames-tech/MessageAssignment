@@ -4,13 +4,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-class RecyclerViewAdapter(val messageList:List<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter( var messageList: ArrayList<Message>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
-  //  constructor( itemList: ArrayList<Item>) : this() { }
+
+    fun addMessagge(message:Message){
+       messageList.add(message)
+        notifyDataSetChanged()
+        
+    }
+
+
+    fun deleteMessage(){
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -30,7 +42,7 @@ class RecyclerViewAdapter(val messageList:List<Message>): RecyclerView.Adapter<R
 
         val message = messageList.get(position)
 
-        if(message.sender == "other"){
+        if(message.sender == "John"){
 
             return 1
 
@@ -45,9 +57,10 @@ class RecyclerViewAdapter(val messageList:List<Message>): RecyclerView.Adapter<R
 
     override fun getItemCount(): Int {
 
-       // if (getItemViewType())
         return messageList.size
     }
+
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
