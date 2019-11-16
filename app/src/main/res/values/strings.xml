@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Chat window</string>
+
+    <string-array name="spinner">
+        <item>Me</item>
+        <item>John</item>
+
+    </string-array>
 </resources>

@@ -7,6 +7,31 @@
         android:layout_height="match_parent"
         tools:context=".view.MainActivity">
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    </LinearLayout>
+
+
+
+
+    <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/meView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/otherView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -17,6 +42,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
 
     <LinearLayout
             android:id="@+id/linearLayout"
@@ -44,9 +70,20 @@
                 android:background="@drawable/message_btn"/>
 
 
+
+
+
     </LinearLayout>
 
+    <Spinner
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
 
+            android:id="@+id/spinner"
+            android:background="#ECE8E8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

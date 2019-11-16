@@ -16,11 +16,15 @@ class RecyclerViewAdapter( var messageList: ArrayList<Message>): RecyclerView.Ad
     fun addMessagge(message:Message){
        messageList.add(message)
         notifyDataSetChanged()
-        
+
+
     }
 
 
     fun deleteMessage(){
+
+        messageList.removeAt(messageList.size-1)
+        notifyDataSetChanged()
 
     }
 
